@@ -1,0 +1,634 @@
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-dark: #121212;
+            --spotify-dark-elevated: #181818;
+            --spotify-black: #000000;
+            --text-white: #FFFFFF;
+            --text-gray: #B3B3B3;
+            --text-subdued: #535353;
+            --hover-gray: #282828;
+            --gaming-purple: #9147FF;
+            --gaming-blue: #00D9FF;
+            --gaming-pink: #FF006E;
+            --gaming-orange: #FF8C42;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--spotify-black);
+            color: var(--text-white);
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--spotify-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--text-subdued);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-gray);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7) !important;
+            backdrop-filter: blur(20px);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(0, 0, 0, 0.95) !important;
+            box-shadow: 0 4px 30px rgba(29, 185, 84, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--spotify-green) !important;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-brand i {
+            margin-right: 8px;
+        }
+
+        .nav-link {
+            color: var(--text-gray) !important;
+            font-weight: 600;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--text-white) !important;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--spotify-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        /* Main Container */
+        .main-container {
+            padding: 100px 20px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Bento Box Base Styles */
+        .bento-box {
+            background: var(--spotify-dark-elevated);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--spotify-green);
+            box-shadow: 0 20px 60px rgba(29, 185, 84, 0.2);
+        }
+
+        .bento-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(29, 185, 84, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .bento-box:hover::before {
+            opacity: 1;
+        }
+
+        /* Profile Box - Large */
+        .profile-box {
+            grid-column: span 5;
+            grid-row: span 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--spotify-dark-elevated) 0%, var(--hover-gray) 100%);
+            position: relative;
+        }
+
+        .profile-picture {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid var(--spotify-green);
+            box-shadow: 0 0 40px rgba(29, 185, 84, 0.4);
+            background: linear-gradient(135deg, var(--spotify-green), var(--gaming-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            margin-bottom: 25px;
+            animation: fadeInScale 1s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .profile-name {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--spotify-green), var(--gaming-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .profile-title {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        .profile-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn-spotify {
+            background-color: var(--spotify-green);
+            color: var(--spotify-black);
+            padding: 12px 30px;
+            border-radius: 500px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-spotify:hover {
+            background-color: #1ed760;
+            transform: scale(1.05);
+            color: var(--spotify-black);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--spotify-green);
+            color: var(--spotify-green);
+            background: transparent;
+            padding: 12px 30px;
+            border-radius: 500px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--spotify-green);
+            color: var(--spotify-black);
+        }
+
+        /* About Box */
+        .about-box {
+            grid-column: span 7;
+            grid-row: span 2;
+        }
+
+        .box-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--spotify-green);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .box-title i {
+            font-size: 2rem;
+        }
+
+        .about-text {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        /* Stats Boxes */
+        .stats-box {
+            grid-column: span 3;
+            text-align: center;
+            background: linear-gradient(135deg, var(--gaming-purple), var(--gaming-blue));
+        }
+
+        .stats-box:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Project Boxes */
+        .project-box {
+            grid-column: span 4;
+            position: relative;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .project-header {
+            object-fit: cover;
+            width: 100%;
+            background: linear-gradient(135deg, var(--gaming-purple), var(--gaming-blue));
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .project-icon {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 12px;
+        }
+
+        .project-description {
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: var(--hover-gray);
+            color: var(--spotify-green);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid var(--spotify-green);
+        }
+
+        /* Skills Box */
+        .skills-box {
+            grid-column: span 6;
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: var(--text-white);
+            font-size: 1rem;
+        }
+
+        .skill-level-text {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            font-weight: 600;
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: var(--text-subdued);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--spotify-green), var(--gaming-blue));
+            border-radius: 10px;
+            transition: width 1.5s ease;
+        }
+
+        /* Hobbies Box */
+        .hobby-box {
+            grid-column: span 3;
+            text-align: center;
+            padding: 40px 25px;
+        }
+
+        .hobby-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--spotify-green), var(--gaming-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hobby-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 10px;
+        }
+
+        .hobby-description {
+            color: var(--text-gray);
+            line-height: 1.5;
+            font-size: 0.85rem;
+        }
+
+        /* Contact Box */
+        .contact-box {
+            grid-column: span 12;
+            text-align: center;
+            background: linear-gradient(135deg, var(--spotify-dark-elevated), var(--hover-gray));
+            padding: 50px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: var(--hover-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--spotify-green);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--spotify-green);
+            color: var(--spotify-black);
+            transform: scale(1.15) rotate(5deg);
+            border-color: var(--spotify-green);
+        }
+
+        /* Quote Box */
+        .quote-box {
+            grid-column: span 6;
+            background: linear-gradient(135deg, var(--gaming-pink), var(--gaming-orange));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 40px;
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .quote-author {
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--spotify-black);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid var(--spotify-dark-elevated);
+        }
+
+        footer p {
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        .footer-heart {
+            color: var(--spotify-green);
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .bento-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+
+            .profile-box {
+                grid-column: span 6;
+            }
+
+            .about-box {
+                grid-column: span 6;
+            }
+
+            .stats-box {
+                grid-column: span 2;
+            }
+
+            .project-box {
+                grid-column: span 3;
+            }
+
+            .skills-box {
+                grid-column: span 6;
+            }
+
+            .hobby-box {
+                grid-column: span 3;
+            }
+
+            .quote-box {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .profile-box,
+            .about-box,
+            .stats-box,
+            .project-box,
+            .skills-box,
+            .hobby-box,
+            .quote-box,
+            .contact-box {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .profile-picture {
+                width: 150px;
+                height: 150px;
+                font-size: 4rem;
+            }
+
+            .profile-name {
+                font-size: 2rem;
+            }
+
+            .box-title {
+                font-size: 1.5rem;
+            }
+
+            .profile-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-spotify,
+            .btn-outline {
+                width: 100%;
+            }
+
+            .main-container {
+                padding: 80px 15px 40px;
+            }
+        }
+
+        /* Animations */
+        .bento-box {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stagger animation for boxes */
+        .bento-box:nth-child(1) { animation-delay: 0.1s; }
+        .bento-box:nth-child(2) { animation-delay: 0.2s; }
+        .bento-box:nth-child(3) { animation-delay: 0.3s; }
+        .bento-box:nth-child(4) { animation-delay: 0.4s; }
+        .bento-box:nth-child(5) { animation-delay: 0.5s; }
+        .bento-box:nth-child(6) { animation-delay: 0.6s; }
+        .bento-box:nth-child(7) { animation-delay: 0.7s; }
+        .bento-box:nth-child(8) { animation-delay: 0.8s; }
+        .bento-box:nth-child(9) { animation-delay: 0.9s; }
+        .bento-box:nth-child(10) { animation-delay: 1s; }
+        .bento-box:nth-child(11) { animation-delay: 1.1s; }
+        .bento-box:nth-child(12) { animation-delay: 1.2s; }
